@@ -280,6 +280,10 @@ Where To Go From Here
 Finish the CRUD  for Comments as a  learning exercise, using
 the existing blog controller and views as a reference.
 
+Fix any  of the numerous  bugs you are likely  to encounter,
+such as not being able to delete entries that have comments,
+due to foreign key constraints.
+
 Write  some entities  of your  own using  the existing  Blog
 models views and controllers as a reference.
 
