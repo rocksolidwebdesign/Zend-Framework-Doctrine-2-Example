@@ -58,7 +58,7 @@ There are two new files to share some of the work::
     application/doctrine/common.php
 
 ``application/common.php``  contains   most  of   the  stuff
-``you   would   find   in   ``public/index.php``   such   as
+you   would    find   in   ``public/index.php``    such   as
 ``APPLICATION_PATH`` etc
 
 ``application/doctrine/common.php``  contains  most  of  the
@@ -277,10 +277,14 @@ handy setup to make use of though
 Where To Go From Here
 =====================
 
-Write some entities of your own using the Blog entities as reference.
+Finish the CRUD  for Comments as a  learning exercise, using
+the existing blog controller and views as a reference.
 
-Learn more about both Doctrine and Zend Framework in general, but
-specifically about Doctrine.
+Write  some entities  of your  own using  the existing  Blog
+models views and controllers as a reference.
+
+Learn  more  about  both  Doctrine  and  Zend  Framework  in
+general, but specifically about Doctrine.
 
 * Associations
 * Using the Entity Manager
