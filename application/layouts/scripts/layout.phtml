@@ -1,0 +1,32 @@
+<?php
+    $title = $this->layout()->title;
+    $this->headTitle(($title ? "$title - " : 'Blog - ') .  "MySite.com");
+    $this->headLink()->prependStylesheet("/css/layout.css");
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+?>
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html>
+    <head>
+<?php
+    echo $this->headTitle(),"\n";
+    echo $this->headMeta(),"\n";
+    echo $this->headLink(),"\n";
+    echo $this->headStyle(),"\n";
+    echo $this->headScript(),"\n";
+?>
+    </head>
+    <body>
+        <div id="zfd-page">
+            <?php echo $this->layout()->content; ?>
+
+            <div class="zdf-page-footer">
+                <p>
+                A Zend Framework 1.11 and Doctrine 2.0 Integration
+                </p>
+                <p>
+                <img src="http://framework.zend.com/images/PoweredBy_ZF_4LightBG.png" />
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

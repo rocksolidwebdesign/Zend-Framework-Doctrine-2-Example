@@ -1,0 +1,21 @@
+<?php $entry = $this->row; ?>
+<p>
+<a href="/blog">Back To List</a>
+</p>
+
+<h1 class="zfd-blog-entry-title"><?php echo $entry->title; ?></h1>
+<div class="zfd-blog-entry-content"><?php echo $entry->content; ?></div>
+<div class="zfd-blog-entry-pub-date">
+    <em>Published On: <?php echo $entry->pub_date->format('Y-m-d'); ?></em>
+</div>
+
+<h2>Comments</h2>
+<div class="zfd-blog-entry-comments">
+    <?php foreach ($entry->comments as $comment): ?>
+        <h3 class="zfd-blog-entry-comment-title"><?php echo $comment->title; ?></h3>
+        <div class="zfd-blog-entry-comment"><?php echo $comment->content; ?></div>
+        <div class="zfd-blog-entry-comment-pub-date">
+            <em>Published On: <?php echo $comment->pub_date->format('Y-m-d'); ?></em>
+        </div>
+    <?php endforeach; ?>
+</div>

@@ -1,0 +1,51 @@
+body {
+    font-family: "Arial","Helvetica","Verdana","Sans","MS Sans",sans-serif;
+    font-size: 12px;
+    background: #33a;
+}
+
+#zfd-page {
+    background: #fff;
+    width: 800px;
+    border: 1px solid #555;
+    padding: 10px;
+    margin: 25px auto;
+}
+
+table.zfd-crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table.zfd-crud-table th, table.zfd-crud-table td {
+    border: 1px solid #d5d5d5;
+    padding: 4px;
+}
+
+table.zfd-crud-table th {
+    background: #f5f5f6;
+    color: #555;
+}
+
+table.zfd-crud-table td.zfd-crud-table-actions {
+    width: 125px;
+    text-align: center;
+}
+
+.zfd-crud-pager-links {
+    float: right;
+}
+
+.zfd-crud-pager-header,
+.zfd-crud-pager-footer
+{
+    padding: 10px;
+}
+
+.zdf-page-footer {
+    text-align: center;
+}
+.zdf-page-footer p {
+    font-style: italic;
+}

@@ -1,0 +1,14 @@
+Page <?php echo $this->pageNum+1; ?> 
+of <?php echo $this->numPages; ?>
+
+<div class="zfd-crud-pager-links">
+    <?php for ($x = $this->lBound; $x < $this->pageNum; $x++): ?>
+        <a href="/blog/index/page/<?php echo $x; ?>/size/<?php echo $this->pageSize; ?>"><?php echo $x+1; ?></a>
+    <?php endfor; ?>
+
+    <strong><?php echo $x+1; ?></strong>
+
+    <?php for ($x = $this->pageNum+1; $x <= $this->rBound; $x++): ?>
+        <a href="/blog/index/page/<?php echo $x; ?>/size/<?php echo $this->pageSize; ?>"><?php echo $x+1; ?></a>
+    <?php endfor; ?>
+</div>

@@ -1,0 +1,32 @@
+<h1>Latest Blog Entries</h1>
+<p>
+<a href="/blog/edit">New Entry</a>
+</p>
+<div class="zfd-crud-pager-header">
+    <?php echo $this->partial('blog/pager_header.phtml', $this->getVars()); ?>
+</div>
+<table class="zfd-crud-table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->rows as $row): ?>
+        <tr>
+            <td><?php echo $row->id; ?></td>
+            <td><?php echo $row->title; ?></td>
+            <td class="zfd-crud-table-actions">
+                <a href="/blog/show/id/<?php echo $row->id; ?>">Show</a> |
+                <a href="/blog/edit/id/<?php echo $row->id; ?>">Edit</a> |
+                <a href="/blog/delete/id/<?php echo $row->id; ?>">Delete</a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+<div class="zfd-crud-pager-footer">
+    <?php echo $this->partial('blog/pager_footer.phtml', $this->getVars()); ?>
+</div>
