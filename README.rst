@@ -202,8 +202,7 @@ Contains the standard RESTful style CRUD actions::
     delete
 
 This is  probably the primary integration  point of interest
-if you want to use something as a reference to start writing
-your own models from this example app.
+if you want to use something as a reference to start with.
 
 This is what actually uses the Doctrine ORM from within Zend
 Framework, so  you can  see how  to both  get access  to the
