@@ -309,3 +309,8 @@ general, but specifically about Doctrine.
 Also read through the code, there's actually not that much and it
 should give you a good place to start if you've never integrated
 Doctrine with Zend Framework before.
+
+You may find some use from these tutorials
+
+http://rocksolidwebdesign.com/tutorials/doctrine-2-resource-for-zend-framework/
+http://rocksolidwebdesign.com/tutorials/setting-up-the-doctrine-2-cli-with-zend-framework/
