@@ -3,6 +3,16 @@ README
 
 A Zend Framework resource for Doctrine ORM 2.0
 
+You should understand Zend Framework basics and ideally have
+a little bit more experience than that.
+
+It would  be good if you  know what the Doctrine  ORM is and
+why you want  to use it, otherwise, if you  don't, then this
+project may help  you understand what it is and  what it can
+do for  you.
+
+Some brain usage required, void where prohibited ;)
+
 Using The CLI Scripts
 =====================
 
