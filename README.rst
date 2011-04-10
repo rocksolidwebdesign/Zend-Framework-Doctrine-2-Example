@@ -59,6 +59,9 @@ This is a pretty standard  Zend Framework application so not
 much installation is really required, just set up your vhost
 like normal for any Zend Framework application.
 
+Note: doctrine expects your database schema to already exist
+and that you have permissions to add and remove tables.
+
 Loading The Doctrine System
 ===========================
 
