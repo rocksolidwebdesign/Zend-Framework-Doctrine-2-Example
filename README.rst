@@ -312,5 +312,5 @@ Doctrine with Zend Framework before.
 
 You may find some use from these tutorials
 
-http://rocksolidwebdesign.com/tutorials/doctrine-2-resource-for-zend-framework/
-http://rocksolidwebdesign.com/tutorials/setting-up-the-doctrine-2-cli-with-zend-framework/
+* http://rocksolidwebdesign.com/tutorials/doctrine-2-resource-for-zend-framework/
+* http://rocksolidwebdesign.com/tutorials/setting-up-the-doctrine-2-cli-with-zend-framework/
