@@ -47,8 +47,8 @@ database, username and password.
 Installation
 ============
 
-You will,  however, need  to generate  the database.  You do
-this with the doctrine command line tool.
+You will  need to generate  the database. This is  done with
+the doctrine command line tool.
 
 The following commands will generate the database::
 
