@@ -36,7 +36,7 @@ require_once 'Zend/View/Helper/FormElement.php';
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Zend_View_Helper_FormDateTime extends Zend_View_Helper_FormElement
+class Zend_View_Helper_DoctrineDateTime extends Zend_View_Helper_FormElement
 {
     /**
      * Generates 'date textbox'.
@@ -55,7 +55,7 @@ class Zend_View_Helper_FormDateTime extends Zend_View_Helper_FormElement
      *
      * @return string The input tag and options XHTML.
      */
-    public function formDateTime($name, $value = null, $attribs = null,
+    public function doctrineDateTime($name, $value = null, $attribs = null,
         $options = null, $listsep = null)
     {
         $info = $this->_getInfo($name, $value, $attribs, $options, $listsep);

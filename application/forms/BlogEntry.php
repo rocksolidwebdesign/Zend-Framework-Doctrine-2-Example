@@ -1,12 +1,12 @@
 <?php
 class Application_Form_BlogEntry extends Zend_Form
 {
-    protected $_pop_values;
+    protected $_popValues;
 
     public function __construct($options = null, $entity = false)
     {
         if ($entity) {
-            $this->_pop_values = $entity;
+            $this->_popValues = $entity;
         }
 
         parent::__construct($options);
@@ -17,28 +17,20 @@ class Application_Form_BlogEntry extends Zend_Form
         $this->setMethod('post');
         $this->setAttribs(array('id' => 'blog_entry_edit_form', 'class' => 'blog-entry-edit-form'));
 
-        $subform = new Zend_Form_SubForm();
-        $this->addSubForms(array('entity' => $subform));
-
-        $subform->addElement(new Zend_Form_Element_Text('title', array('label' => 'Title')));
-        $subform->addElement(new Zend_Form_Element_Text('permalink', array('label' => 'Permalink URL')));
-        $subform->addElement(new Zend_Form_Element_DateTime('pub_date', array('label' => 'Published On')));
-        $subform->addElement(new Zend_Form_Element_Textarea('content', array('label' => 'Content')));
+        $this->addElement(new Zend_Form_Element_Text('title', array('belongsTo' => 'entity', 'label' => 'Title')));
+        $this->addElement(new Zend_Form_Element_Text('permalink', array('belongsTo' => 'entity', 'label' => 'Permalink URL')));
+        $this->addElement(new Zend_Form_Element_Doctrine_DateTime('pub_date', array('belongsTo' => 'entity', 'label' => 'Published On')));
+        $this->addElement(new Zend_Form_Element_Textarea('content', array('belongsTo' => 'entity', 'label' => 'Content')));
 
         $hidden = $this->_getHidingDecorators();
-
-        // CSRF
-        $this->addElement(new Zend_Form_Element_Hash('csrf_hash', array(
-            'ignore' => true,
-            'decorators' => $hidden
-        )));
+        $this->addElement(new Zend_Form_Element_Hash('csrf_hash', array('ignore' => true, 'decorators' => $hidden)));
         $this->addElement(new Zend_Form_Element_Submit('submit', array('label' => 'Submit')));
 
-        if ($this->_pop_values) {
-            $subform->title->setValue($this->_pop_values->title);
-            $subform->permalink->setValue($this->_pop_values->permalink);
-            $subform->pub_date->setValue($this->_pop_values->pub_date);
-            $subform->content->setValue($this->_pop_values->content);
+        if ($this->_popValues) {
+            $this->title->setValue($this->_popValues->title);
+            $this->permalink->setValue($this->_popValues->permalink);
+            $this->pub_date->setValue($this->_popValues->pub_date);
+            $this->content->setValue($this->_popValues->content);
         }
     }
 

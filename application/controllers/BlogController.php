@@ -2,6 +2,7 @@
 class BlogController extends Zend_Controller_Action
 {
     protected $_doctrine;
+    protected $_repo;
     protected $_flash;
 
     public function init()
@@ -13,34 +14,16 @@ class BlogController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $page = $this->getRequest()->getParam('page');
-        $page = $page ? $page : 0;
+        $this->_initPager();
 
-        $size = $this->getRequest()->getParam('size');
-        $size = $size ? $size : 10;
-
-        $this->view->pageNum  = $page;
-        $this->view->pageSize = $size;
-        $this->view->count    = $this->_repo->getCount();
-        $this->view->numPages = ($numPages = $this->_repo->getPageCount($size));
-        $this->view->rows     = $this->_repo->getPage($page, $size);
-
-        $pagerRadius = 3;
-
-        $lbound = $page - $pagerRadius;
-        $rbound = $page + $pagerRadius;
-
-        $this->view->lBound = $lbound  > 0 ? $lbound : 0;
-        $this->view->rBound = $rbound <= $numPages ? $rbound : $numPages;
-
-        $this->view->lNum = $page - 1 ? $page - 1 : 1;
-        $this->view->rNum = $page + 1 <= $numPages ? $page + 1 : $numPages;
+        $this->view->rows = $this->_repo->getPage(
+            $this->view->pageNum, $this->view->pageSize);
     }
 
     public function showAction()
     {
         if ($id = $this->getRequest()->getParam('id')) {
-            $this->view->row = $this->_doctrine->find('Entities\Blog\Entry', $id);
+            $this->view->row = $this->_repo->find($id);
         } else {
             $this->_helper->redirector('index');
         }
@@ -49,9 +32,10 @@ class BlogController extends Zend_Controller_Action
     public function editAction()
     {
         if ($id = $this->getRequest()->getParam('id')) {
-            $entity = $this->_doctrine->find('Entities\Blog\Entry', $id);
+            $entity = $this->_repo->find($id);
+
             $form = new Application_Form_BlogEntry(null, $entity);
-            $form->setAction("/blog/edit/$id");
+            $form->setAction("/blog/edit/id/$id");
             $this->updateAction($form, $entity);
             $this->view->actionType = 'Update';
         } else {
@@ -76,12 +60,10 @@ class BlogController extends Zend_Controller_Action
                 // save the entity
                 $entity->setData($this->getRequest()->getPost('entity'));
 
-                $this->_doctrine->persist($entity);
-                $this->_doctrine->flush();
+                $this->_doctrine->persist($entity)->flush();
 
                 // report creation to the user
                 $this->_flash->addMessage("Blog entry successfully created.");
-
                 $this->_helper->redirector('index');
             }
         }
@@ -91,12 +73,12 @@ class BlogController extends Zend_Controller_Action
     {
         $form = $form ? $form : new \Application_Form_BlogEntry;
 
-        if ($this->getRequest()->getPost()
+        if ($this->getRequest()->isPost()
             && $form->isValid($this->getRequest()->getPost())
             && ($id = $this->getRequest()->getParam('id'))
         ) {
             // Find the entity
-            $entity = $entity ? $entity : $this->_doctrine->find('Entries\Blog\Entry', $id);
+            $entity = $entity ? $entity : $this->_repo->find($id);
 
             if (!$entity) {
                 $this->_flash->addMessage("Blog entry $id not found.");
@@ -118,11 +100,35 @@ class BlogController extends Zend_Controller_Action
     public function deleteAction()
     {
         if ($id = $this->getRequest()->getParam('id')) {
-            $entity = $this->_doctrine->find('Entities\Blog\Entry', $id);
-            $this->_doctrine->remove($entity);
-            $this->_doctrine->flush();
+            $entity = $this->_repo->find($id);
+            $this->_doctrine->remove($entity)->flush();
         }
 
         $this->_helper->redirector('index');
+    }
+
+    protected function _initPager() {
+        $page = $this->getRequest()->getParam('page');
+        $page = $page ? $page : 0;
+
+        $size = $this->getRequest()->getParam('size');
+        $size = $size ? $size : 10;
+
+        $this->view->pageNum  = $page;
+        $this->view->pageSize = $size;
+
+        $this->view->count    = $this->_repo->getCount();
+        $this->view->numPages = ($numPages = $this->_repo->getPageCount($size));
+
+        $pagerRadius = 3;
+
+        $lbound = $page - $pagerRadius;
+        $rbound = $page + $pagerRadius;
+
+        $this->view->lBound = $lbound  > 0 ? $lbound : 0;
+        $this->view->rBound = $rbound <= $numPages ? $rbound : $numPages;
+
+        $this->view->lNum = $page - 1 ? $page - 1 : 1;
+        $this->view->rNum = $page + 1 <= $numPages ? $page + 1 : $numPages;
     }
 }

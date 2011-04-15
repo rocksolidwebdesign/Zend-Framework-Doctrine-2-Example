@@ -20,7 +20,7 @@
  */
 
 /** Zend_Form_Element_Xhtml */
-require_once 'Zend/Form/Element/Xhtml.php';
+require_once 'Zend/Form/Element/Doctrine/Abstract.php';
 
 /**
  * DateTime form element
@@ -32,15 +32,15 @@ require_once 'Zend/Form/Element/Xhtml.php';
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: Password.php 23775 2011-03-01 17:25:24Z ralph $
  */
-class Zend_Form_Element_DateTime extends Zend_Form_Element_Xhtml
+class Zend_Form_Element_Doctrine_DateTime extends Zend_Form_Element_Doctrine_Abstract
 {
     public $format = 'Y-m-d H:i:s';
 
     /**
-     * Use formDateTime view helper by default
+     * Use doctrineDateTime view helper by default
      * @var string
      */
-    public $helper = 'formDateTime';
+    public $helper = 'doctrineDateTime';
 
     /**
      * Set element value

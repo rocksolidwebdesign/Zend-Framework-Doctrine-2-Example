@@ -2,4 +2,14 @@
 <p>
 <a href="/blog">Cancel</a>
 </p>
-<?php echo $this->form; ?>
+<?php $form = $this->form; ?>
+<form action="<?php echo $form->getAction(); ?>" method="<?php echo $form->getMethod(); ?>">
+    <dl>
+        <?php echo $this->form->title; ?>
+        <?php echo $this->form->permalink; ?>
+        <?php echo $this->form->pub_date; ?>
+        <?php echo $this->form->content; ?>
+        <?php echo $this->form->submit; ?>
+        <?php echo $this->form->csrf_hash; ?>
+    <dl>
+</form>
