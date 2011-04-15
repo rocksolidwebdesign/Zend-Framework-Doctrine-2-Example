@@ -243,12 +243,10 @@ accidentally saved
 The Custom DateTime Form Element
 --------------------------------
 
-So now that we're familiar with the ``library_fork`` it will
-come as no surprise that there is a custom Zend_Form_Element
-living here::
+There is a custom Zend_Form_Element living here::
 
-    application/library_fork/Zend/Form/Element/DateTime.php
-    application/library_fork/Zend/View/Helper/FormDateTime.php
+    application/library_fork/Zend/Form/Element/Doctrine/DateTime.php
+    application/library_fork/Zend/View/Helper/DoctrineDateTime.php
 
 Doctrine uses a literal PHP DateTime object for its datetime
 columns, and this poses problems  when attempting to read or
@@ -282,9 +280,14 @@ original.
 Then at  some other point  in the  future, you may,  at your
 leisure, submit a patch to Zend... or not :P
 
-I originally started this to patch ``Zend_Form_Element`` but
-realized  that there  are other  problems. This  is still  a
-handy setup to make use of though
+Primarily this  made it easy for  me to drop in  things like::
+
+    application/library_fork/Doctrine/ORM/Logger/FileSQLLogger
+
+but it was  also an easy way to extend  various parts of the
+core Zend  Framework in  a way  that would  make it  easy to
+track  the  changes  in  case  I  wanted  to  contribute  or
+something.
 
 Where To Go From Here
 =====================

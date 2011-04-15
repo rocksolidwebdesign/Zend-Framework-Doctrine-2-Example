@@ -15,6 +15,7 @@ $zfConfigArray['pluginPaths']['My_Resource'] = APPLICATION_PATH . '/resources';
 $zfConfigArray['bootstrap']['path'] = APPLICATION_PATH . '/Bootstrap.php';
 $zfConfigArray['bootstrap']['class'] = 'Bootstrap';
 
+$zfConfigArray['autoloaderNamespaces'][] = "Zendoctrine";
 $zfConfigArray['appnamespace'] = 'Application';
 
 $zfConfigArray['resources']['frontController']['controllerDirectory'] = APPLICATION_PATH . '/controllers';
